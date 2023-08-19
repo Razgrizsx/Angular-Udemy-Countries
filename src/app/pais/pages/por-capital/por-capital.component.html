@@ -1,0 +1,20 @@
+<h2>Por Capital</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <app-search-bar (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)" placeholder="{{placeholder}}"></app-search-bar>
+    </div>
+</div>
+
+<hr>
+
+<div *ngIf="error" class="alert alert-danger">
+    No se encontro {{termino}}
+</div>
+
+<div *ngIf="!error" class="row">
+    <div class="col">
+        <app-pais-tabla [paises] = 'paises'></app-pais-tabla>
+    </div>
+</div>
