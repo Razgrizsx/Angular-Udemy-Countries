@@ -13,6 +13,7 @@ export class PorPaisComponent {
   termino : string = ''
   error : boolean = false
   placeholder : string = 'Por Pais...'
+  sugeridos : PaisResponse[] = []
 
   buscar = (event : string) => {
 
@@ -29,7 +30,10 @@ export class PorPaisComponent {
 
   sugerencias  = (termino : string) => {
     this.error = false 
-    console.log(termino)
+    this.termino = termino
+
+    this.paisService.buscarPais(termino)
+      .subscribe(paises => this.sugeridos = paises.splice(0,5))
   }
 
   constructor(private paisService : PaisService){}

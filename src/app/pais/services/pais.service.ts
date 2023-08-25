@@ -11,6 +11,7 @@ export class PaisService {
   private paisUrl = "https://restcountries.com/v3.1/name/"
   private capitalUrl = "https://restcountries.com/v3.1/capital/"
   private idUrl = "https://restcountries.com/v3.1/alpha/"
+  private regionUrl = "https://restcountries.com/v3.1/region/"
 
   constructor(private http : HttpClient) { }
 
@@ -37,5 +38,10 @@ export class PaisService {
     return this.http.get<PaisResponse[]>(terminoUrl)
     
   } 
+
+  buscarRegion(termino:string) : Observable<PaisResponse[]>{
+    const terminoUrl = `${this.regionUrl}${termino}`
+    return this.http.get<PaisResponse[]>(terminoUrl)
+  }
 
 }

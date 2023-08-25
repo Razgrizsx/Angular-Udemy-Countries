@@ -7,6 +7,15 @@
     </div>
 </div>
 
+<ul *ngIf="termino" class="list-group">
+    <li *ngFor="let pais of sugeridos" class="list-group-item list-group-item-action">
+        <a class="nav-link" [routerLink]="['/pais', pais.cca3]">{{pais.flag}} {{pais.name.common}}</a>
+    </li>
+    <li class="list-group-item list-group-item-action" (click)="buscar(termino)">
+        <a class="nav-link">Buscar "{{termino}}"</a>
+    </li>
+</ul>
+
 <hr>
 
 <div *ngIf="error" class="alert alert-danger">
